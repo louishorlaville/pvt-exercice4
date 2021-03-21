@@ -4,13 +4,13 @@ import { IconButton } from '@material-ui/core';
 import SortIcon from '@material-ui/icons/Sort';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import couvertureDefaut from "../images/couverture.webp";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +51,7 @@ export default function Dossier({id, nom, couleur, datemodif, couverture}) {
         <IconButton className="deplacer" aria-label="déplacer" disableRipple={true}>
           <SortIcon />
         </IconButton>
-        <img src={couverture} alt={nom}/>
+        <img src={couverture? couverture: couvertureDefaut} alt={nom}/>
       </div>
       <div className="info">
         <h2>{nom}</h2>
@@ -66,7 +66,7 @@ export default function Dossier({id, nom, couleur, datemodif, couverture}) {
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        
+        {/* Menu contextuel */}
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
