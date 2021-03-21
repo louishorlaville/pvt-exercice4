@@ -28,15 +28,25 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
       }
       // Faut pas oublier d'appeler la fonction
       chercherDossiers();
+      console.log(dossiers.length);
     }, []
   );
 
   return (
     <ul className="ListeDossiers">
+      {console.log(dossiers.length)}
       {
-        dossiers.map( 
-          dossier =>  <li key={dossier.id}><Dossier {...dossier} /></li>
-        )
+        
+        dossiers.length >= 1 ?
+        <>
+        {
+          dossiers.map( 
+            dossier =>  <li key={dossier.id}><Dossier {...dossier} /></li>
+          )
+        }
+        </>
+        :
+        <div className="msgErreurDossiers"><span>Votre list de dossiers est vide</span><br/><span>;-(</span></div>
       }
     </ul>
   );

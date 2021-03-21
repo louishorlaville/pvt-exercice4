@@ -90,12 +90,12 @@ export default function AjouterDossier({ouvert, setOuvert, gererAjout}) {
           />
         </DialogContent>
         <DialogActions>
-          <GreenButton onClick={()=>{setOuvert(false); viderChamps()}} color="primary">
+          <RedButton onClick={()=>{setOuvert(false); viderChamps()}} color="primary">
             Annuler
-          </GreenButton>
-          <RedButton onClick={() => {nom !== '' && gererAjout(nom, couverture, couleur); viderChamps(); }} color="white">
-            Ajouter
           </RedButton>
+          <GreenButton onClick={() => {nom !== '' && gererAjout(nom, couverture, couleur); viderChamps(); }} color="white">
+            Ajouter
+          </GreenButton>
         </DialogActions>
       </Dialog>
     </div>

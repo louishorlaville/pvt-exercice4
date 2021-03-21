@@ -4,4 +4,22 @@
   padding: 10px 20px;
   justify-content: center;
   flex-wrap: wrap;
+
+  .msgErreurDossiers{
+    background-color: #8FB9A8;
+    color: white;
+    padding: 25px;
+    width: 350px;
+    height: 400px;
+    font-size: 1.9em;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+
+    span:last-child{
+      font-size: 5em;
+      align-self:center;
+
+    }
+  }
 }
