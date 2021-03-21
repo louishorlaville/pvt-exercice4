@@ -4,7 +4,13 @@ import 'firebase/firestore';
 
 // Configuration (mettez-y les vôtres !)
 const firebaseConfig = {
-  
+  apiKey: "AIzaSyCNoBew2DQyWGQigE_yW5RxPs6H5NA_NhE",
+  authDomain: "pvt-h21-lh.firebaseapp.com",
+  databaseURL: "https://pvt-h21-lh-default-rtdb.firebaseio.com",
+  projectId: "pvt-h21-lh",
+  storageBucket: "pvt-h21-lh.appspot.com",
+  messagingSenderId: "451415435455",
+  appId: "1:451415435455:web:069b921878f8b6d2707e0a"
 };
 
 // Initialiser Firebase
