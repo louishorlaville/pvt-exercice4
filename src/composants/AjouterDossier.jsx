@@ -6,11 +6,48 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useState } from 'react';
 import { TwitterPicker } from 'react-color';
+import { green, red} from '@material-ui/core/colors';
+import { withStyles,makeStyles } from "@material-ui/core/styles";
+
+const GreenButton = withStyles((theme) => ({
+  root: {
+    color: '#fff',
+    backgroundColor: green[500],
+    '&:hover': {
+      backgroundColor: green[700],
+    },
+    overrides: {
+      Button: {
+        raisedPrimary: {
+          color: 'white',
+        },
+      },
+    }
+  },
+}))(Button);
+
+const RedButton = withStyles((theme) => ({
+  root: {
+    color:'#fff',
+    backgroundColor: red[500],
+    '&:hover': {
+      backgroundColor: red[700],
+    },
+  },
+}))(Button);
+
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+}));
 
 export default function AjouterDossier({ouvert, setOuvert, gererAjout}) {
   const [nom, setNom] = useState('');
   const [couverture, setCouverture] = useState('');
   const [couleur, setCouleur] = useState('#537169');
+
+  const classes = useStyles();
 
   function viderChamps() {
     setNom('');
@@ -34,7 +71,7 @@ export default function AjouterDossier({ouvert, setOuvert, gererAjout}) {
             defaultValue={nom}
           />
           <TextField
-            margin="dense"
+            margin="normal"
             id="urlImage"
             label="Adresse de l'image de couverture"
             type="text"
@@ -42,20 +79,23 @@ export default function AjouterDossier({ouvert, setOuvert, gererAjout}) {
             onChange={(e) => setCouverture(e.target.value)}
             defaultValue={couverture}
           />
+          </DialogContent>
+          <DialogContent>
           <TwitterPicker 
             width="100%" 
             triangle="hide" 
             onChangeComplete={(couleur, e) => setCouleur(couleur.hex)}
             color={couleur}
+            colors={['#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3']}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={()=>{setOuvert(false); viderChamps()}} color="primary">
+          <GreenButton onClick={()=>{setOuvert(false); viderChamps()}} color="primary">
             Annuler
-          </Button>
-          <Button onClick={() => {nom !== '' && gererAjout(nom, couverture, couleur); viderChamps(); }} color="primary">
+          </GreenButton>
+          <RedButton onClick={() => {nom !== '' && gererAjout(nom, couverture, couleur); viderChamps(); }} color="white">
             Ajouter
-          </Button>
+          </RedButton>
         </DialogActions>
       </Dialog>
     </div>
